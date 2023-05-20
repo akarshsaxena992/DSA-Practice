@@ -1,0 +1,14 @@
+Best Time to Buy and Sell Stock
+
+
+int maxProfit(vector<int>& prices) {
+        int diff=0,mini=prices[0],n=prices.size();
+        int i;
+        for(i=1 ; i<n ; i++)
+        {
+            diff=max(diff,prices[i]-mini);
+            mini=min(prices[i],mini);
+        }
+        return diff;
+    }
+}; 
