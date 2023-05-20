@@ -1,0 +1,50 @@
+Sort an array of 0's 1's & 2's
+
+Method 1: My solution
+void sortColors(vector<int>& nums) {
+        vector<int> v(3,0);
+        for(int i=0;i<nums.size();i++)
+        {
+            v[nums[i]]++;
+        }
+        int j=0;
+        for(int i=0;i<nums.size();i++)
+        {
+            if(v[j]>0)
+            {
+                nums[i]=j;
+                v[j]--;
+            }
+            else
+            {
+                j++;
+                i--;
+            }
+        }
+    }
+};
+
+
+Method 2: Optimal
+void sortColors(vector<int>& nums) {
+        int low=0,mid=0,high=nums.size()-1;
+        while(mid<=high)
+        {
+            if(nums[mid]==0)
+            {
+                swap(nums[mid],nums[low]);
+                mid++;
+                low++;
+            }
+            else if(nums[mid]==1)
+            {
+                mid++;
+            }
+            else
+            {
+                swap(nums[mid],nums[high]);
+                high--;
+            }
+        }
+    }
+};
